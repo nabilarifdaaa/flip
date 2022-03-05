@@ -16,7 +16,7 @@ const Detail = ({navigation}) => {
     }
     
   };
-  console.log(show)
+  
   return (
     <View style={styles.container}>
       <Header title="Detail" onPress={() => navigation.goBack()} />
