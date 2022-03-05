@@ -1,3 +1,5 @@
-import ItemList from "./ItemList";
+import ItemList from './ItemList';
+import Header from './Header';
+import TextContent from './TextContent';
 
-export {ItemList}
+export {ItemList, Header, TextContent};

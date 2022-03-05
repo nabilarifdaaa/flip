@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Image, View} from 'react-native';
 import {Badge} from '../../atoms';
+import TextContent from '../TextContent';
 import {Arrow, Dot} from '../../../assets';
 import {colors} from '../../../utils';
 
@@ -49,11 +50,7 @@ const ItemList = ({
   return (
     <TouchableOpacity onPress={onPress} style={styles.container(status)}>
       <View>
-        <View style={styles.row}>
-          <Text style={styles.bankNameTxt}>{sender_bank}</Text>
-          <Image source={Arrow} style={styles.iconArrow} />
-          <Text style={styles.bankNameTxt}>{beneficiary_bank}</Text>
-        </View>
+        <TextContent type='bank' sender={sender_bank} to={beneficiary_bank}/>
         <Text style={styles.nameTxt}>{beneficiary_name}</Text>
         <View style={styles.row}>
           <Text>{currency}</Text>
@@ -61,7 +58,7 @@ const ItemList = ({
           <Text>{date}</Text>
         </View>
       </View>
-      <Badge type={status}/>
+      <Badge type={status} />
     </TouchableOpacity>
   );
 };
@@ -76,24 +73,15 @@ const styles = StyleSheet.create({
     borderLeftColor: status === 'SUCCESS' ? colors.green : colors.primary,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   }),
   row: {
     flexDirection: 'row',
-  },
-  iconArrow: {
-    width: 20,
-    height: 20,
   },
   iconDot: {
     width: 10,
     height: 10,
     margin: '1%',
-  },
-  bankNameTxt: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
   },
   nameTxt: {
     fontSize: 13,

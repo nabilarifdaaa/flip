@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {ItemList} from '../../components';
 import axios from 'axios';
+import { colors } from '../../utils';
 
 const Home = ({navigation}) => {
   const [list, setList] = useState([]);
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#F5F9F8',
+    backgroundColor: colors.bg,
   },
 });

@@ -1,3 +1,6 @@
-import Badge from "./Badge";
+import Badge from './Badge';
+import Button from './Button';
+import Gap from './Gap';
+import Link from './Link';
 
-export {Badge}
+export {Badge, Button, Gap, Link};

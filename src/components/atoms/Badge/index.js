@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   text: type =>({
     fontWeight: 'bold',
     fontSize: 11,
-    color: type==='SUCCESS'? colors.white: ''
+    color: type==='SUCCESS'? colors.white: '#000'
   })
 });
