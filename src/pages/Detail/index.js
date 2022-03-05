@@ -19,7 +19,7 @@ const Detail = ({navigation}) => {
   
   return (
     <View style={styles.container}>
-      <Header title="Detail" onPress={() => navigation.goBack()} />
+      <Header title="Detail" onPress={() => navigation.goBack()} hasBack />
       <Gap height={20} />
       <View style={styles.content}>
         <View style={styles.row}>

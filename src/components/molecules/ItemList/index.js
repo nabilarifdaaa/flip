@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Image, View} from 'react-native';
-import {Badge} from '../../atoms';
+import {Badge, Gap} from '../../atoms';
 import TextContent from '../TextContent';
 import {Arrow, Dot} from '../../../assets';
 import {colors} from '../../../utils';
@@ -51,7 +51,9 @@ const ItemList = ({
     <TouchableOpacity onPress={onPress} style={styles.container(status)}>
       <View>
         <TextContent type='bank' sender={sender_bank} to={beneficiary_bank}/>
+        <Gap height={3}/>
         <Text style={styles.nameTxt}>{beneficiary_name}</Text>
+        <Gap height={3}/>
         <View style={styles.row}>
           <Text>{currency}</Text>
           <Image source={Dot} style={styles.iconDot} />
