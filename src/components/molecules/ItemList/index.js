@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Image, View} from 'react-native';
-import {Badge, Gap} from '../../atoms';
+import {Badge, Currency, Gap} from '../../atoms';
 import TextContent from '../TextContent';
 import {Arrow, Dot} from '../../../assets';
 import {colors} from '../../../utils';
@@ -15,9 +15,8 @@ const ItemList = ({
   onPress,
 }) => {
   const [date, setDate] = useState('');
-  const [currency, setCurrency] = useState('');
 
-  const reformatData = (date, amount) => {
+  const reformatData = (date) => {
     let splitTime = date.split(' ');
     let splitDate = splitTime[0].split('-');
     let month = new Array();
@@ -36,16 +35,11 @@ const ItemList = ({
     let newDate = splitDate[2] + ' ' + month[splitDate[1]] + ' ' + splitDate[0];
     setDate(newDate);
 
-    let curr = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-    }).format(amount);
-    setCurrency(curr);
   };
 
   useEffect(() => {
-    reformatData(completed_at, amount);
-  }, [completed_at, amount]);
+    reformatData(completed_at);
+  }, []);
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container(status)}>
@@ -55,7 +49,7 @@ const ItemList = ({
         <Text style={styles.nameTxt}>{beneficiary_name}</Text>
         <Gap height={3}/>
         <View style={styles.row}>
-          <Text>{currency}</Text>
+          <Currency amount={amount}/>
           <Image source={Dot} style={styles.iconDot} />
           <Text>{date}</Text>
         </View>

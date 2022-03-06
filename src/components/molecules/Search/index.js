@@ -4,7 +4,7 @@ import {colors} from '../../../utils';
 import {Button} from '../../atoms';
 import {SearchIcon} from '../../../assets';
 
-const Search = ({titleButton, onPress}) => {
+const Search = ({titleButton, onPress, onChange}) => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -12,9 +12,10 @@ const Search = ({titleButton, onPress}) => {
         <TextInput
           placeholder="Cari nama, bank, atau nominal"
           placeholderTextColor={colors.grey}
+          onChangeText={val => onChange(val)}
         />
       </View>
-      <Button icon="expand-with-text" title={titleButton} onPress={onPress}/>
+      <Button icon="expand-with-text" title={titleButton} onPress={onPress} />
     </View>
   );
 };

@@ -2,10 +2,14 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Header, TextContent, Gap, Link, Button} from '../../components';
 import {colors} from '../../utils';
+import { useSelector } from "react-redux";
 
-const Detail = ({navigation}) => {
+const Detail = ({navigation, route}) => {
   const [textLink, setTextLink] = useState('Lihat');
+  const { transaction } = useSelector((state) => state);
   const [show, setShow] = useState(false);
+  const key = route.params.key
+  const item = transaction.listTransaction[key]
 
   const handleMore = () => {
     setShow(!show);
@@ -23,8 +27,7 @@ const Detail = ({navigation}) => {
       <Gap height={20} />
       <View style={styles.content}>
         <View style={styles.row}>
-          <Text style={styles.titleText}>ID TRANSAKSI: </Text>
-          <Text style={styles.titleText}>id transc</Text>
+          <Text style={styles.titleText}>ID TRANSAKSI: {item.id}</Text>
           <Gap width={10} />
           <Button icon="copy" />
         </View>
@@ -39,17 +42,17 @@ const Detail = ({navigation}) => {
       <Gap height={5} />
       {show && (
         <View style={styles.content}>
-          <TextContent type="bank" sender="sender" to="to" />
+          <TextContent type="bank" sender={item.sender_bank} to={item.beneficiary_bank} />
           <Gap height={10} />
           <View style={styles.row}>
             <TextContent
-              title="Name"
-              desc="no rek"
+              title={item.beneficiary_name}
+              desc={item.account_number}
               style={styles.halfContent}
             />
             <TextContent
               title="Nominal"
-              desc="amount"
+              desc={item.amount}
               style={styles.halfContent}
             />
           </View>
@@ -57,19 +60,19 @@ const Detail = ({navigation}) => {
           <View style={styles.row}>
             <TextContent
               title="Berita Transfer"
-              desc="no rek"
+              desc={item.remark}
               style={styles.halfContent}
             />
             <TextContent
               title="Kode Unik"
-              desc="amount"
+              desc={item.unique_code}
               style={styles.halfContent}
             />
           </View>
           <Gap height={20} />
           <TextContent
             title="Waktu Dibuat"
-            desc="amount"
+            desc={item.created_at}
             style={styles.halfContent}
           />
         </View>

@@ -17,7 +17,7 @@ const Modals = ({isVisible, data, onCloseModal, onPressItem, checked}) => {
     }
     return <Button icon="unchecked" size={25} onPress={onPressItem}/>;
   };
-  console.log('check', checked)
+  
   return (
     <View>
       <Modal
