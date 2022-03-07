@@ -3,12 +3,15 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import {Arrow} from '../../../assets';
 
 const TextContent = ({title, desc, sender, to, type, style}) => {
+  
   if (type === 'bank') {
+    let lengthSender = sender.length
+    let lengthTo = to.length
     return (
       <View style={styles.row}>
-        <Text style={styles.bankNameTxt}>{sender}</Text>
+        <Text style={styles.bankNameTxt(lengthSender)}>{sender}</Text>
         <Image source={Arrow} style={styles.iconArrow} />
-        <Text style={styles.bankNameTxt}>{to}</Text>
+        <Text style={styles.bankNameTxt(lengthTo)}>{to}</Text>
       </View>
     );
   }
@@ -29,11 +32,11 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
-  bankNameTxt: {
+  bankNameTxt: length=> ({
     fontSize: 16,
     fontWeight: 'bold',
-    textTransform: 'uppercase',
-  },
+    textTransform: length<=4?'uppercase':'capitalize',
+  }),
   title: {
     textTransform: 'uppercase',
     fontWeight: '600',

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Cl} from 'react-native';
 import {
   Header,
   TextContent,
@@ -27,7 +27,7 @@ const Detail = ({navigation, route}) => {
       setTextLink('Lihat');
     }
   };
-  console.log('data', item.created_at)
+  
   return (
     <View style={styles.container}>
       <Header title="Detail" onPress={() => navigation.goBack()} hasBack />
