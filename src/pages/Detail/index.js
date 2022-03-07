@@ -17,8 +17,7 @@ const Detail = ({navigation, route}) => {
   const [textLink, setTextLink] = useState('Lihat');
   const {transaction} = useSelector(state => state);
   const [show, setShow] = useState(false);
-  const key = route.params.key;
-  const item = transaction.listTransaction[key];
+  const item = route.params.key;
 
   const handleMore = () => {
     setShow(!show);

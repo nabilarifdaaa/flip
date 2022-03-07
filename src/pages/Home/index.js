@@ -6,14 +6,14 @@ import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {
   listTransaction,
-  searchTransaction,
-  allList,
   filterTransaction,
 } from '../../redux/actions/transactionAction';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {transaction} = useSelector(state => state);
+  const [list, setList] = useState({})
+  const [search, setSearch] = useState('')
   const [text, setText] = useState('URUTKAN');
   const [filter, setFilter] = useState([
     {
@@ -55,8 +55,8 @@ const Home = ({navigation}) => {
     axios
       .get(url)
       .then(response => {
+        setList({...response.data})
         dispatch(listTransaction({...response.data}));
-        dispatch(allList({...response.data}));
       })
       .catch(error => {
         console.log('error catch', error);
@@ -76,7 +76,11 @@ const Home = ({navigation}) => {
         };
       if (item.id == id) {
         setText(item.type);
-        dispatch(filterTransaction(item.slug));
+        if(item.slug === 'sort'){ //jika pilih 'urutkan' maka kembali ke state list awal sebelum di sort
+          dispatch(listTransaction({...list}))
+        }else{ 
+          dispatch(filterTransaction(item.slug));
+        }
         return {...item, checked: !item.checked};
       }
       return item;
@@ -86,12 +90,7 @@ const Home = ({navigation}) => {
   };
 
   onChange = val => {
-    if (val) {
-      const valLowCase = val.toLowerCase();
-      dispatch(searchTransaction(valLowCase));
-    } else {
-      dispatch(listTransaction({...transaction.allList}));
-    }
+    setSearch(val.toLowerCase())
   };
 
   return (
@@ -106,20 +105,33 @@ const Home = ({navigation}) => {
         />
         <Gap height={20} />
         <ScrollView style={{height: '85%'}}>
-          {Object.keys(transaction.listTransaction).map(key => {
+          {Object.values(transaction.listTransaction).filter(key => {
             return (
-              <View style={{marginBottom: 15}} key={key}>
+              key.beneficiary_name
+                .toLowerCase()
+                .includes(search) ||
+              key.beneficiary_bank
+                .toLowerCase()
+                .includes(search) ||
+              key.sender_bank
+                .toLowerCase()
+                .includes(search) ||
+              `${key.amount}`.includes(search)
+            );
+          }).map(key => {
+            return (
+              <View style={{marginBottom: 15}} key={key.id}>
                 <ItemList
-                  sender_bank={transaction.listTransaction[key].sender_bank}
+                  sender_bank={key.sender_bank}
                   beneficiary_bank={
-                    transaction.listTransaction[key].beneficiary_bank
+                    key.beneficiary_bank
                   }
                   beneficiary_name={
-                    transaction.listTransaction[key].beneficiary_name
+                    key.beneficiary_name
                   }
-                  amount={transaction.listTransaction[key].amount}
-                  created_at={transaction.listTransaction[key].created_at}
-                  status={transaction.listTransaction[key].status}
+                  amount={key.amount}
+                  created_at={key.created_at}
+                  status={key.status}
                   onPress={() => navigation.navigate('Detail', {key})}
                 />
               </View>
