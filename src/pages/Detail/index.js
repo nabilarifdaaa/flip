@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Alert
+} from 'react-native';
 import {
   Header,
   TextContent,
@@ -12,6 +17,7 @@ import {
 } from '../../components';
 import {colors} from '../../utils';
 import {useSelector} from 'react-redux';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 const Detail = ({navigation, route}) => {
   const [textLink, setTextLink] = useState('Lihat');
@@ -28,6 +34,11 @@ const Detail = ({navigation, route}) => {
     }
   };
 
+  const copyToClipboard = text => {
+    Clipboard.setString(text);
+    Alert.alert('Copied Successfully')
+  };
+
   return (
     <View style={styles.container}>
       <Statusbar />
@@ -37,7 +48,7 @@ const Detail = ({navigation, route}) => {
         <View style={styles.row}>
           <Text style={styles.titleContent}>ID TRANSAKSI: {item.id}</Text>
           <Gap width={10} />
-          <Button icon="copy" />
+          <Button icon="copy" onPress={() => copyToClipboard(item.id)} />
         </View>
       </View>
       <Gap height={5} />
