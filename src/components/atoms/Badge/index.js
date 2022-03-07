@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: type==='PENDING'? 1 : 0,
     borderColor: type==='PENDING'? colors.primary : '',
-    backgroundColor: type==='SUCCESS' ? colors.green : ''
+    backgroundColor: type==='SUCCESS' ? colors.green : colors.white
   }),
   text: type =>({
     fontWeight: 'bold',

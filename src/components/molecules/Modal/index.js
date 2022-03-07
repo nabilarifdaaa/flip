@@ -5,17 +5,17 @@ import {
   Modal,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Image
 } from 'react-native';
 import React from 'react';
 import {colors} from '../../../utils';
 import {Button, Gap} from '../../atoms';
+import { Checked, Unchecked } from '../../../assets';
 
-const Modals = ({isVisible, data, onCloseModal, onPressItem, checked}) => {
-  const RadioButton = () => {
-    if (checked) {
-      return <Button icon="checked" size={25} onPress={onPressItem}/>;
-    }
-    return <Button icon="unchecked" size={25} onPress={onPressItem}/>;
+const Modals = ({isVisible, data, onCloseModal, onPressItem, index}) => {
+  // const [inde]
+  const RadioButton = ({checked}) => {
+    return <Image source={checked ? Checked : Unchecked} style={{width: 25, height: 25}} />;
   };
   
   return (
@@ -36,8 +36,9 @@ const Modals = ({isVisible, data, onCloseModal, onPressItem, checked}) => {
                   <TouchableOpacity
                     key={ind}
                     style={styles.itemList}
-                    onPress={onPressItem}>
-                    <RadioButton/>
+                    activeOpacity={1}
+                    onPress={() => onPressItem(item.id)}>
+                    <RadioButton checked={item.checked}/>
                     <Gap width={10} />
                     <Text style={styles.itemText}>{item.type}</Text>
                   </TouchableOpacity>

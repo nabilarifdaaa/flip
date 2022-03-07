@@ -39,7 +39,7 @@ const ItemList = ({
 
   useEffect(() => {
     reformatData(completed_at);
-  }, []);
+  });
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container(status)}>

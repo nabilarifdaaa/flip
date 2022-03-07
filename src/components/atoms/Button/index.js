@@ -32,7 +32,7 @@ const Button = ({icon, onPress, size, title}) => {
   };
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} >
       <Icon />
     </TouchableOpacity>
   );

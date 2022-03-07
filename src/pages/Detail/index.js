@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Header, TextContent, Gap, Link, Button} from '../../components';
+import {Header, TextContent, Gap, Link, Button, Currency} from '../../components';
 import {colors} from '../../utils';
 import { useSelector } from "react-redux";
 
@@ -27,7 +27,7 @@ const Detail = ({navigation, route}) => {
       <Gap height={20} />
       <View style={styles.content}>
         <View style={styles.row}>
-          <Text style={styles.titleText}>ID TRANSAKSI: {item.id}</Text>
+          <Text style={styles.titleContent}>ID TRANSAKSI: {item.id}</Text>
           <Gap width={10} />
           <Button icon="copy" />
         </View>
@@ -35,7 +35,7 @@ const Detail = ({navigation, route}) => {
       <Gap height={5} />
       <View style={styles.content}>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
-          <Text style={styles.titleText}>DETAIL TRANSAKSI </Text>
+          <Text style={styles.titleContent}>DETAIL TRANSAKSI </Text>
           <Link text={textLink} onPress={() => handleMore()} />
         </View>
       </View>
@@ -50,11 +50,10 @@ const Detail = ({navigation, route}) => {
               desc={item.account_number}
               style={styles.halfContent}
             />
-            <TextContent
-              title="Nominal"
-              desc={item.amount}
-              style={styles.halfContent}
-            />
+            <View>
+              <Text style={styles.title}>Nominal</Text>
+              <Currency amount={item.amount}/>
+            </View>
           </View>
           <Gap height={20} />
           <View style={styles.row}>
@@ -97,8 +96,13 @@ const styles = StyleSheet.create({
     padding: '5%',
     backgroundColor: colors.white,
   },
-  titleText: {
+  titleContent: {
     fontSize: 16,
     fontWeight: '600',
+  },
+  title: {
+    textTransform: 'uppercase',
+    fontWeight: '600',
+    fontSize: 14
   },
 });

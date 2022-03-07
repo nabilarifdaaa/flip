@@ -18,3 +18,11 @@ export function searchTransaction(data) {
     payload: data,
   };
 }
+
+export function filterTransaction(data) {
+  return {
+    type: 'FILTER_TRANSACTION',
+    payload: data,
+  };
+}
+
