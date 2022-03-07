@@ -1,43 +1,44 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 const DateComponent = ({dateProp}) => {
-  //   console.log('func ', date)
+  // console.log(dateProp)
+  const [formatted, setFormatted] = useState('');
 
   const reformatDate = date => {
-    let formatDate = new Date(date);
-    // let newDate = formatDate.getDate();
-    // let month = formatDate.getMonth();
-    // let year = formatDate.getYear();
-
-    // const months = [
-    //   'Januari',
-    //   'Februari',
-    //   'Maret',
-    //   'April',
-    //   'Mei',
-    //   'Juni',
-    //   'Juli',
-    //   'Agustus',
-    //   'September',
-    //   'Oktober',
-    //   'November',
-    //   'Desember',
-    // ];
-
-    // let newMonth = months[month];
-    // let formatted = newDate + ' ' + newMonth + ' ' + year;
-    // setDateNew(formatted);
-    // return formatted;
+    let splitTime = date.split(' ');
+    let splitDate = splitTime[0].split('-');
+    let month = new Array();
+    month['01'] = 'Januari';
+    month['02'] = 'Februari';
+    month['03'] = 'Maret';
+    month['04'] = 'April';
+    month['05'] = 'Mei';
+    month['06'] = 'Juni';
+    month['07'] = 'Juli';
+    month['08'] = 'Agustus';
+    month['09'] = 'September';
+    month['10'] = 'Oktober';
+    month['11'] = 'November';
+    month['12'] = 'Desember';
+    let newDate =
+      splitDate[2].replace(/^0+/, '') +
+      ' ' +
+      month[splitDate[1]] +
+      ' ' +
+      splitDate[0];
+    return newDate
+    // setFormatted(newDate);
   };
 
-  // //   useEffect(() => {
-  // //     reformatDate(date)
-  // //   },[]);
+  // useEffect(() => {
+  //     reformatDate(dateProp);
+  //   },[dateProp]);
+  
 
   return (
     <View>
-      {/* <Text>{reformatDate(dateProp)}</Text> */}
+      <Text>{reformatDate(dateProp)}</Text>
     </View>
   );
 };

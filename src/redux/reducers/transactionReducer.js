@@ -83,7 +83,6 @@ const transactionReducer = (state = initialState, action) => {
           }
           return 0
         });
-        console.log(filtered)
       }
       return {
         ...state,

@@ -1,26 +1,33 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Header, TextContent, Gap, Link, Button, Currency} from '../../components';
+import {
+  Header,
+  TextContent,
+  Gap,
+  Link,
+  Button,
+  Currency,
+  Date,
+} from '../../components';
 import {colors} from '../../utils';
-import { useSelector } from "react-redux";
+import {useSelector} from 'react-redux';
 
 const Detail = ({navigation, route}) => {
   const [textLink, setTextLink] = useState('Lihat');
-  const { transaction } = useSelector((state) => state);
+  const {transaction} = useSelector(state => state);
   const [show, setShow] = useState(false);
-  const key = route.params.key
-  const item = transaction.listTransaction[key]
+  const key = route.params.key;
+  const item = transaction.listTransaction[key];
 
   const handleMore = () => {
     setShow(!show);
     if (!show) {
       setTextLink('Tutup');
-    }else{
+    } else {
       setTextLink('Lihat');
     }
-    
   };
-  
+  console.log('data', item.created_at)
   return (
     <View style={styles.container}>
       <Header title="Detail" onPress={() => navigation.goBack()} hasBack />
@@ -42,7 +49,11 @@ const Detail = ({navigation, route}) => {
       <Gap height={5} />
       {show && (
         <View style={styles.content}>
-          <TextContent type="bank" sender={item.sender_bank} to={item.beneficiary_bank} />
+          <TextContent
+            type="bank"
+            sender={item.sender_bank}
+            to={item.beneficiary_bank}
+          />
           <Gap height={10} />
           <View style={styles.row}>
             <TextContent
@@ -52,7 +63,7 @@ const Detail = ({navigation, route}) => {
             />
             <View>
               <Text style={styles.title}>Nominal</Text>
-              <Currency amount={item.amount}/>
+              <Currency amount={item.amount} />
             </View>
           </View>
           <Gap height={20} />
@@ -69,11 +80,10 @@ const Detail = ({navigation, route}) => {
             />
           </View>
           <Gap height={20} />
-          <TextContent
-            title="Waktu Dibuat"
-            desc={item.created_at}
-            style={styles.halfContent}
-          />
+          <View>
+            <Text style={styles.title}>Waktu Dibuat</Text>
+            <Date dateProp={item.created_at}/>
+          </View>
         </View>
       )}
     </View>
@@ -103,6 +113,6 @@ const styles = StyleSheet.create({
   title: {
     textTransform: 'uppercase',
     fontWeight: '600',
-    fontSize: 14
+    fontSize: 14,
   },
 });

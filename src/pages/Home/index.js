@@ -48,6 +48,7 @@ const Home = ({navigation}) => {
     },
   ]);
   const [showFilter, setShowFilter] = useState(false);
+  
 
   const getTransaction = () => {
     const url = 'https://nextar.flip.id/frontend-test';
@@ -110,14 +111,10 @@ const Home = ({navigation}) => {
               <View style={{marginBottom: 15}} key={key}>
                 <ItemList
                   sender_bank={transaction.listTransaction[key].sender_bank}
-                  beneficiary_bank={
-                    transaction.listTransaction[key].beneficiary_bank
-                  }
-                  beneficiary_name={
-                    transaction.listTransaction[key].beneficiary_name
-                  }
+                  beneficiary_bank={transaction.listTransaction[key].beneficiary_bank}
+                  beneficiary_name={transaction.listTransaction[key].beneficiary_name}
                   amount={transaction.listTransaction[key].amount}
-                  completed_at={transaction.listTransaction[key].created_at}
+                  created_at={transaction.listTransaction[key].created_at}
                   status={transaction.listTransaction[key].status}
                   onPress={() => navigation.navigate('Detail', {key})}
                 />
