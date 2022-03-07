@@ -13,6 +13,7 @@ const Search = ({titleButton, onPress, onChange}) => {
           placeholder="Cari nama, bank, atau nominal"
           placeholderTextColor={colors.grey}
           onChangeText={val => onChange(val)}
+          style={styles.input}
         />
       </View>
       <Button icon="expand-with-text" title={titleButton} onPress={onPress} />
@@ -25,7 +26,7 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '5%',
+    height: '8%',
     backgroundColor: colors.white,
     padding: 10,
     borderRadius: 8,
@@ -35,9 +36,14 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center'
   },
   icon: {
     width: 20,
     height: 20,
   },
+  input: {
+    height: 40,
+    color: colors.black
+  }
 });

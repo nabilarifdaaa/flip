@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Cl} from 'react-native';
+import {StyleSheet, Text, View } from 'react-native';
 import {
   Header,
   TextContent,
@@ -8,6 +8,7 @@ import {
   Button,
   Currency,
   Date,
+  Statusbar,
 } from '../../components';
 import {colors} from '../../utils';
 import {useSelector} from 'react-redux';
@@ -27,9 +28,10 @@ const Detail = ({navigation, route}) => {
       setTextLink('Lihat');
     }
   };
-  
+
   return (
     <View style={styles.container}>
+      <Statusbar />
       <Header title="Detail" onPress={() => navigation.goBack()} hasBack />
       <Gap height={20} />
       <View style={styles.content}>
@@ -82,7 +84,7 @@ const Detail = ({navigation, route}) => {
           <Gap height={20} />
           <View>
             <Text style={styles.title}>Waktu Dibuat</Text>
-            <Date dateProp={item.created_at}/>
+            <Date dateProp={item.created_at} />
           </View>
         </View>
       )}
@@ -109,10 +111,12 @@ const styles = StyleSheet.create({
   titleContent: {
     fontSize: 16,
     fontWeight: '600',
+    color: colors.black,
   },
   title: {
     textTransform: 'uppercase',
     fontWeight: '600',
     fontSize: 14,
+    color: colors.black,
   },
 });

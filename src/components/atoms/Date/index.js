@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import { colors } from '../../../utils';
 
 const DateComponent = ({dateProp}) => {
-  const [formatted, setFormatted] = useState('');
 
   const reformatDate = date => {
     let splitTime = date.split(' ');
@@ -27,21 +27,19 @@ const DateComponent = ({dateProp}) => {
       ' ' +
       splitDate[0];
     return newDate
-    // setFormatted(newDate);
   };
-
-  // useEffect(() => {
-  //     reformatDate(dateProp);
-  //   },[dateProp]);
-  
 
   return (
     <View>
-      <Text>{reformatDate(dateProp)}</Text>
+      <Text style={styles.txt}>{reformatDate(dateProp)}</Text>
     </View>
   );
 };
 
 export default DateComponent;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  txt: {
+    color: colors.black
+  }
+});

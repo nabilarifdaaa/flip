@@ -74,9 +74,11 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 14,
     fontWeight: '500',
+    color: colors.black
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: colors.black
   },
 });

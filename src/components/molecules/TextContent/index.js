@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {Arrow} from '../../../assets';
+import { colors } from '../../../utils';
 
 const TextContent = ({title, desc, sender, to, type, style}) => {
   
@@ -36,13 +37,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textTransform: length<=4?'uppercase':'capitalize',
+    color: colors.black
   }),
   title: {
     textTransform: 'uppercase',
     fontWeight: '600',
-    fontSize: 14
+    fontSize: 14,
+    color: colors.black
   },
   desc: {
-    fontSize: 14
+    fontSize: 14,
+    color: colors.black
   }
 });

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-import {Header, ItemList, Search, Gap, Modal} from '../../components';
+import {Header, ItemList, Search, Gap, Modal, Statusbar} from '../../components';
 import {colors} from '../../utils';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
@@ -8,7 +8,7 @@ import {
   listTransaction,
   searchTransaction,
   allList,
-  filterTransaction
+  filterTransaction,
 } from '../../redux/actions/transactionAction';
 
 const Home = ({navigation}) => {
@@ -48,7 +48,6 @@ const Home = ({navigation}) => {
     },
   ]);
   const [showFilter, setShowFilter] = useState(false);
-  
 
   const getTransaction = () => {
     const url = 'https://nextar.flip.id/frontend-test';
@@ -71,19 +70,19 @@ const Home = ({navigation}) => {
   const selectFilter = id => {
     let updatedList = filter.map(item => {
       if (item.id !== id)
-      return {
-        ...item,
-        checked: false,
-      }
+        return {
+          ...item,
+          checked: false,
+        };
       if (item.id == id) {
-        setText(item.type)
-        dispatch(filterTransaction(item.slug))
+        setText(item.type);
+        dispatch(filterTransaction(item.slug));
         return {...item, checked: !item.checked};
       }
       return item;
     });
     setFilter(updatedList);
-    setShowFilter(false)
+    setShowFilter(false);
   };
 
   onChange = val => {
@@ -97,6 +96,7 @@ const Home = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Statusbar />
       <Header title="List Transaksi" />
       <View style={styles.content}>
         <Search
@@ -111,8 +111,12 @@ const Home = ({navigation}) => {
               <View style={{marginBottom: 15}} key={key}>
                 <ItemList
                   sender_bank={transaction.listTransaction[key].sender_bank}
-                  beneficiary_bank={transaction.listTransaction[key].beneficiary_bank}
-                  beneficiary_name={transaction.listTransaction[key].beneficiary_name}
+                  beneficiary_bank={
+                    transaction.listTransaction[key].beneficiary_bank
+                  }
+                  beneficiary_name={
+                    transaction.listTransaction[key].beneficiary_name
+                  }
                   amount={transaction.listTransaction[key].amount}
                   created_at={transaction.listTransaction[key].created_at}
                   status={transaction.listTransaction[key].status}
@@ -140,5 +144,6 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+    paddingBottom: '10%',
   },
 });

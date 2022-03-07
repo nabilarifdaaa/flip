@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
   nameTxt: {
     fontSize: 13,
     textTransform: 'uppercase',
+    color: colors.black
   },
 });
