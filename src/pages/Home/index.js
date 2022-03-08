@@ -156,6 +156,6 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingBottom: '10%',
+    paddingBottom: '20%',
   },
 });
