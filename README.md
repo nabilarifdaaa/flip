@@ -1,4 +1,4 @@
-# Flip Transaction &middot; ![Github Release](https://img.shields.io/badge/version-v1.0.0-brightgreen)
+# Flip Transaction &middot; [![Github Release](https://img.shields.io/badge/version-v1.0.0-brightgreen)](https://github.com/nabilarifdaaa/flip/releases/tag/v1.0.0)
 a simple transaction application for Recruitment Technical Test in Flip
 
 ## Technologies
