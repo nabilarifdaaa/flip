@@ -1,4 +1,4 @@
-# Flip Transaction 
+# Flip Transaction &middot; ![Github Release](https://img.shields.io/badge/version-v1.0.0-brightgreen)
 a simple transaction application for Recruitment Technical Test in Flip
 
 ## Technologies
@@ -20,6 +20,9 @@ $ cd ios/pod install
 * List Transaction sort by name asc,desc and date asc,desc
 * Detail Transaction Page
 * Copy text to clipboard
+
+## Release
+You can find out the release apk on [Github Release](https://github.com/nabilarifdaaa/flip/releases)
 
 ## Screenshot Application
 
