@@ -24,13 +24,13 @@ $ cd ios/pod install
 ## Screenshot Application
 
 #### List Transaction
-![list1](https://user-images.githubusercontent.com/37871042/157167399-cb8cd6bf-115a-4b64-94b5-18ea0d43198c.jpeg)
+<img src="https://user-images.githubusercontent.com/37871042/157167399-cb8cd6bf-115a-4b64-94b5-18ea0d43198c.jpeg" alt="Screenshot 1" width="30%"/>
 
 #### List Transaction Search
-![search](https://user-images.githubusercontent.com/37871042/157167523-cef2dd15-b617-41b7-a937-1849e4685050.jpeg)
+<img src="https://user-images.githubusercontent.com/37871042/157167523-cef2dd15-b617-41b7-a937-1849e4685050.jpeg" alt="Screenshot 2" width="30%"/>
 
 #### List Transaction Sort
-![sort](https://user-images.githubusercontent.com/37871042/157167546-173d0826-eac9-49c9-bbb5-d20223deeb91.jpeg)
+<img src="https://user-images.githubusercontent.com/37871042/157167546-173d0826-eac9-49c9-bbb5-d20223deeb91.jpeg" alt="Screenshot 3" width="30%"/>
 
 #### Detail Transaction
-![detail](https://user-images.githubusercontent.com/37871042/157167565-c6689059-1399-4f0a-ab4d-f40b791bd540.jpeg)
+<img src="https://user-images.githubusercontent.com/37871042/157167565-c6689059-1399-4f0a-ab4d-f40b791bd540.jpeg" alt="Screenshot 4" width="30%"/>
